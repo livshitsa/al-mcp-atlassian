@@ -24,31 +24,11 @@ from .constants import (
     CONFLUENCE_DEFAULT_VERSION,
     DEFAULT_TIMESTAMP,
     EMPTY_STRING,
-    JIRA_DEFAULT_ID,
-    JIRA_DEFAULT_ISSUE_TYPE,
-    JIRA_DEFAULT_KEY,
-    JIRA_DEFAULT_PRIORITY,
-    JIRA_DEFAULT_PROJECT,
-    JIRA_DEFAULT_STATUS,
     NONE_VALUE,
     UNASSIGNED,
     UNKNOWN,
 )
 
-# Jira models
-from .jira import (
-    JiraComment,
-    JiraIssue,
-    JiraIssueType,
-    JiraPriority,
-    JiraProject,
-    JiraSearchResult,
-    JiraStatus,
-    JiraStatusCategory,
-    JiraTransition,
-    JiraUser,
-    JiraWorklog,
-)
 
 # Additional models will be added as they are implemented
 
@@ -62,27 +42,9 @@ __all__ = [
     "CONFLUENCE_DEFAULT_VERSION",
     "DEFAULT_TIMESTAMP",
     "EMPTY_STRING",
-    "JIRA_DEFAULT_ID",
-    "JIRA_DEFAULT_ISSUE_TYPE",
-    "JIRA_DEFAULT_KEY",
-    "JIRA_DEFAULT_PRIORITY",
-    "JIRA_DEFAULT_PROJECT",
-    "JIRA_DEFAULT_STATUS",
     "NONE_VALUE",
     "UNASSIGNED",
     "UNKNOWN",
-    # Jira models
-    "JiraUser",
-    "JiraStatus",
-    "JiraStatusCategory",
-    "JiraIssueType",
-    "JiraPriority",
-    "JiraComment",
-    "JiraIssue",
-    "JiraProject",
-    "JiraTransition",
-    "JiraWorklog",
-    "JiraSearchResult",
     # Confluence models
     "ConfluenceUser",
     "ConfluenceSpace",

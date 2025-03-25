@@ -47,21 +47,7 @@ logger = logging.getLogger("mcp-atlassian")
     default=True,
     help="Verify SSL certificates for Confluence Server/Data Center (default: verify)",
 )
-@click.option(
-    "--jira-url",
-    help="Jira URL (e.g., https://your-domain.atlassian.net or https://jira.your-company.com)",
-)
-@click.option("--jira-username", help="Jira username/email (for Jira Cloud)")
-@click.option("--jira-token", help="Jira API token (for Jira Cloud)")
-@click.option(
-    "--jira-personal-token",
-    help="Jira Personal Access Token (for Jira Server/Data Center)",
-)
-@click.option(
-    "--jira-ssl-verify/--no-jira-ssl-verify",
-    default=True,
-    help="Verify SSL certificates for Jira Server/Data Center (default: verify)",
-)
+
 def main(
     verbose: bool,
     env_file: str | None,
@@ -72,15 +58,11 @@ def main(
     confluence_token: str | None,
     confluence_personal_token: str | None,
     confluence_ssl_verify: bool,
-    jira_url: str | None,
-    jira_username: str | None,
-    jira_token: str | None,
-    jira_personal_token: str | None,
-    jira_ssl_verify: bool,
-) -> None:
-    """MCP Atlassian Server - Jira and Confluence functionality for MCP
 
-    Supports both Atlassian Cloud and Jira Server/Data Center deployments.
+) -> None:
+    """MCP Atlassian Server - Confluence functionality for MCP
+
+    Supports both Atlassian Cloud Server/Data Center deployments.
     """
     # Configure logging based on verbosity
     logging_level = logging.INFO
@@ -108,20 +90,10 @@ def main(
         os.environ["CONFLUENCE_API_TOKEN"] = confluence_token
     if confluence_personal_token:
         os.environ["CONFLUENCE_PERSONAL_TOKEN"] = confluence_personal_token
-    if jira_url:
-        os.environ["JIRA_URL"] = jira_url
-    if jira_username:
-        os.environ["JIRA_USERNAME"] = jira_username
-    if jira_token:
-        os.environ["JIRA_API_TOKEN"] = jira_token
-    if jira_personal_token:
-        os.environ["JIRA_PERSONAL_TOKEN"] = jira_personal_token
 
     # Set SSL verification for Confluence Server/Data Center
     os.environ["CONFLUENCE_SSL_VERIFY"] = str(confluence_ssl_verify).lower()
 
-    # Set SSL verification for Jira Server/Data Center
-    os.environ["JIRA_SSL_VERIFY"] = str(jira_ssl_verify).lower()
 
     from . import server
 
